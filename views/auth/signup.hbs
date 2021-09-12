@@ -1,0 +1,33 @@
+{{!-- views/auth/signup.hbs --}}
+<div class="container2 d-flex flex-column text-center">
+    <div id="form">
+        <h2>Register</h2>
+        <form action="/signup" method="POST" class="d-flex flex-column">
+            <div class="d-flex flex-column">
+                <label> Username <br>
+                    <input type="text" name="username" class="maxWidthInput" placeholder="ironhacker" required />
+                </label>
+
+                <label> Email <br>
+                    <input type="email" name="email" class="maxWidthInput" placeholder="rockstar@ironhack.com"
+                        required />
+                </label>
+
+                <label> Password <br>
+                    <input type="password" class="maxWidthInput" name="password" placeholder="********" required />
+                </label>
+                {{#if errorMessage}}
+                <div class="alert alert-danger" role="alert">
+                    <p class="error">{{errorMessage}}</p>
+                </div>
+                {{/if}}
+                <div>
+                    <button type="submit" class="btn btn-dark maxWidthInput">Create account</button>
+                </div>
+                <br>
+
+            </div>
+        </form>
+    </div>
+    <a href="/"><button class="btn btn-dark btnInputIndex maxWidthInput">Home</button></a>
+</div>
