@@ -1,12 +1,10 @@
-hello
 <div class='container'>
   <h1>Cryptocurrency list</h1>
 
   {{!-- {{#each coins.data}}
   <h1>{{name}}</h1> --}}
-
-
-  <table class="table">
+  <input type="text" id="myInput" onkeyup="searchCrypto()" placeholder="Search crypto by name..">
+  <table class="table" id="table" class="table table-striped table-bordered table-sm">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Currency</th>
@@ -19,9 +17,10 @@ hello
     </thead>
     <tbody>
       {{#each coins.data}}
-      <tr>
+      <tr class="toHideRow">
         {{!-- <th scope="row">{{name}}</th> --}}
-        <td>{{name}}</td>
+
+        <td><a href="/cryptocurrency/detalle">{{name}}</a></td>
         <td>{{symbol}}</td>
         <td>{{price_usd}} $</td>
         <td>{{percent_change_24h}}</td>
@@ -32,4 +31,6 @@ hello
 
     </tbody>
   </table>
+
+  <a href="/cryptocurrency/{{start}}"><button>View 100 more</button></a>
 </div>

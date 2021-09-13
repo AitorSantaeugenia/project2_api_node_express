@@ -36,3 +36,11 @@ input:invalid:required {
 input:valid {
   border: 2px solid black;
 }
+canvas{
+  width: 80vw;
+  height: 50vh !important;
+}
+
+/* .toHideRow:nth-child(0+10){
+  display:none;
+} */

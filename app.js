@@ -38,6 +38,10 @@ app.use('/', signup);
 const crypto = require('./routes/coinApi.route');
 app.use('/', crypto);
 
+//cryptocurrency routes
+const graphs = require('./routes/graphs.route');
+app.use('/', graphs);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require('./error-handling')(app);
 

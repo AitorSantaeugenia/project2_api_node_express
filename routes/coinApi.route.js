@@ -16,12 +16,15 @@ const router = express.Router();
 const Api = require('../services/ApiHandler');
 const coinLoreApi = new Api();
 
-//First 100 cryptos
-router.get('/cryptocurrency', (req, res) => {
+//First 100 cryptos /?start=100&limit=100
+router.get('/cryptocurrency/:start', (req, res) => {
+	let start = Number(req.params.start);
+	start += 100;
+
 	coinLoreApi
-		.getAllCoins100()
+		.getAllCoins100(start)
 		.then((allCoins100) => {
-			res.render(`cryptocurrency/list`, { coins: allCoins100.data });
+			res.render(`cryptocurrency/list`, { coins: allCoins100.data, start });
 			//res.send(allCoins100.data);
 			//console.log(allCoins100.data);
 		})

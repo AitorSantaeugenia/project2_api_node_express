@@ -5,11 +5,11 @@ const axios = require('axios');
 class coinLoreApi {
 	constructor() {
 		this.api = axios.create({
-			baseURL: 'https://api.coinlore.net/api'
+			baseURL: 'https://api.coinlore.net/api/tickers/'
 		});
 	}
 
-	getAllCoins100 = () => this.api.get(`/tickers`);
+	getAllCoins100 = (start) => this.api.get(`?start=${start}`);
 }
 
 module.exports = coinLoreApi;
