@@ -1,0 +1,35 @@
+hello
+<div class='container'>
+  <h1>Cryptocurrency list</h1>
+
+  {{!-- {{#each coins.data}}
+  <h1>{{name}}</h1> --}}
+
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Currency</th>
+        <th scope="col">Symbol</th>
+        <th scope="col">Price $</th>
+        <th scope="col">% 24h</th>
+        <th scope="col">% 1d</th>
+        <th scope="col">% 7d</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each coins.data}}
+      <tr>
+        {{!-- <th scope="row">{{name}}</th> --}}
+        <td>{{name}}</td>
+        <td>{{symbol}}</td>
+        <td>{{price_usd}} $</td>
+        <td>{{percent_change_24h}}</td>
+        <td>{{percent_change_1h}}</td>
+        <td>{{percent_change_7d}}</td>
+      </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>
