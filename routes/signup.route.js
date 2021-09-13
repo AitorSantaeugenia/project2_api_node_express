@@ -109,21 +109,5 @@ router.post('/login', (req, res, next) => {
 		})
 		.catch((error) => next(error));
 });
-// ---------------------------------------------------------------------------------
-// USER PROFILE - GET
-// ---------------------------------------------------------------------------------
-router.get('/userProfile', isLoggedIn, (req, res) => {
-	res.render('users/user-profile', { userInSession: req.session.currentUser });
-});
 
-// ---------------------------------------------------------------------------------
-// LOGOUT - POST
-// ---------------------------------------------------------------------------------
-router.post('/logout', (req, res, next) => {
-	req.session.destroy((err) => {
-		if (err) next(err);
-		res.redirect('/');
-	});
-});
-// ---------------------------------------------------------------------------------
 module.exports = router;

@@ -3,7 +3,7 @@ window.onload = () => {
 	// Line chart https://www.chartjs.org/docs/latest/
 	const url = 'http://api.coindesk.com/v1/bpi/historical/close.json';
 	axios.get(url).then((responseFromAPI) => {
-		console.log(responseFromAPI);
+		//console.log(responseFromAPI);
 		//Get key
 		const labels = Object.keys(responseFromAPI.data.bpi);
 		const prices = labels.map((key) => responseFromAPI.data.bpi[key]);
@@ -15,8 +15,8 @@ window.onload = () => {
 		//Adding min max prices to input
 		let minPrice = document.getElementById('minPrice');
 		let maxPrice = document.getElementById('maxPrice');
-		maxPrice.value = maximumPrice;
-		minPrice.value = minimumPrice;
+		maxPrice.value = maximumPrice + ' $';
+		minPrice.value = minimumPrice + ' $';
 
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -59,6 +59,7 @@ window.onload = () => {
 			}
 		});
 	});
+
 	//SELECTING DATES
 	const searchButton = document.getElementById('searchDates');
 	searchButton.addEventListener('click', () => {
@@ -80,8 +81,8 @@ window.onload = () => {
 			//Adding min max prices to input
 			let minPrice = document.getElementById('minPrice');
 			let maxPrice = document.getElementById('maxPrice');
-			maxPrice.value = maximumPrice;
-			minPrice.value = minimumPrice;
+			maxPrice.value = maximumPrice + ' $';
+			minPrice.value = minimumPrice + ' $';
 			const ctx = document.getElementById('myChart').getContext('2d');
 			const myChart = new Chart(ctx, {
 				type: 'line',
@@ -127,7 +128,7 @@ window.onload = () => {
 	//SELECTING CURRENCY
 	const currencyButton = document.getElementById('currency');
 	currencyButton.addEventListener('change', () => {
-		console.log('We are here');
+		//console.log('We are here');
 		const startingDate = document.getElementById('startingDate').value;
 		const endingDate = document.getElementById('endingDate').value;
 		const currency = document.getElementById('currency').value;
@@ -152,8 +153,8 @@ window.onload = () => {
 			//Adding min max prices to input
 			let minPrice = document.getElementById('minPrice');
 			let maxPrice = document.getElementById('maxPrice');
-			maxPrice.value = maximumPrice;
-			minPrice.value = minimumPrice;
+			maxPrice.value = maximumPrice + ' $';
+			minPrice.value = minimumPrice + ' $';
 
 			const ctx = document.getElementById('myChart').getContext('2d');
 			const myChart = new Chart(ctx, {
@@ -203,4 +204,5 @@ window.onload = () => {
 			});
 		});
 	});
+	// Graph for currencies
 };

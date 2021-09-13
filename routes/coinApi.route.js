@@ -11,24 +11,86 @@ const router = express.Router();
 // // 10 saltrounds
 // const saltRounds = 10;
 
+//Import models
+const User = require('../models/User.model');
+const Crypto = require('../models/Crypto.model');
+
 // Import for middleware
-// const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
+const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 const Api = require('../services/ApiHandler');
 const coinLoreApi = new Api();
 
-//First 100 cryptos /?start=100&limit=100
-router.get('/cryptocurrency/:start', (req, res) => {
+//First 100 cryptos /?start=100&limit=100 || This api can't do more
+router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 	let start = Number(req.params.start);
 	start += 100;
 
+	//console.log('aitor', req.session.currentUser);
 	coinLoreApi
 		.getAllCoins100(start)
 		.then((allCoins100) => {
-			res.render(`cryptocurrency/list`, { coins: allCoins100.data, start });
+			res.render(`cryptocurrency/list`, {
+				coins: allCoins100.data,
+				start,
+				userInSession: req.session.currentUser
+			});
 			//res.send(allCoins100.data);
 			//console.log(allCoins100.data);
 		})
 		.catch((err) => console.log(err));
+});
+
+// ADD cryptocurrency to favorites list
+router.post('/add-favorite', isLoggedIn, (req, res) => {
+	const query = ({
+		name,
+		symbol,
+		price_usd,
+		percent_change_24h,
+		percent_change_1h,
+		percent_change_7d,
+		apiID
+	} = req.body);
+	const userID = req.session.currentUser._id;
+	const idToCheck = query.apiID;
+	//console.log('User id:', req.session.currentUser._id);
+	//console.log('Query:', query.id);
+	//res.redirect('/cryptocurrency/list');
+	console.log(idToCheck);
+
+	Crypto.find({ apiID: idToCheck }).then((charArray) => {
+		//comprobar si ese apiId ya esta en db cards
+		//console.log(idToCheck);
+		console.log('Whoot', charArray);
+		//console.log(charArray.length);
+
+		if (charArray.length === 0) {
+			Crypto.create(query)
+				.then((result) => {
+					console.log('Check this', result.id);
+					User.findByIdAndUpdate(userID, { $push: { cryptocurrency: result.id } }).then(() => {
+						res.redirect('/cryptocurrency/list');
+					});
+				})
+				.catch((err) => console.log(err));
+		} else {
+			User.findById(userID)
+				.then((user) => {
+					if (!user.cryptocurrency.includes(charArray[0]._id)) {
+						User.findByIdAndUpdate(userID, {
+							$push: { cryptocurrency: charArray[0]._id }
+						}).then(() => {
+							res.redirect('/cryptocurrency/list');
+						});
+					} else {
+						res.redirect('/cryptocurrency/list');
+					}
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		}
+	});
 });
 
 module.exports = router;

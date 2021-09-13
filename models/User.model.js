@@ -21,6 +21,10 @@ const userSchema = new Schema(
 		passwordHash: {
 			type: String,
 			required: [ true, 'Password is required.' ]
+		},
+		cryptocurrency: {
+			type: [ Schema.Types.ObjectId ],
+			ref: 'Crypto'
 		}
 	},
 	{

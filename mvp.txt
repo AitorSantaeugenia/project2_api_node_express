@@ -1,0 +1,16 @@
+- Use Express as a foundation. -
+- Use Mongoose for models and database communication. -
+- Have validation on its models with feedback for users if their submission is invalid. -
+- Have a repo on GitHub. -
+- Have at least 1 commit per day that you worked on it. -
+- Include sign up, log in & log out functionality with encrypted passwords (and/or social logins) and authorization (logged in users can do extra things).
+- Have 2 models or more. Having one for users is a no-brainer. 
+The other one(s) should represent the main functionality of your app. Don’t force it if having more than two models doesn’t make sense.
+
+
+
+
+- Have routes for all of CRUD for models other than users. There should have created, read, update, 
+and delete features even if they aren’t all for the same model.
+- Be deployed online using Heroku so that anybody could use your app.
+- Responsive design is not a requirement, but it’s nice to have.

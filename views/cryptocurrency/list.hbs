@@ -3,6 +3,8 @@
 
   {{!-- {{#each coins.data}}
   <h1>{{name}}</h1> --}}
+
+
   <input type="text" id="myInput" onkeyup="searchCrypto()" placeholder="Search crypto by name..">
   <table class="table" id="table" class="table table-striped table-bordered table-sm">
     <thead class="thead-dark">
@@ -13,19 +15,30 @@
         <th scope="col">% 24h</th>
         <th scope="col">% 1d</th>
         <th scope="col">% 7d</th>
+        <th scope="col">Favorite</th>
+        {{!-- <th scope="col">Remove</th> --}}
       </tr>
     </thead>
     <tbody>
       {{#each coins.data}}
       <tr class="toHideRow">
-        {{!-- <th scope="row">{{name}}</th> --}}
-
-        <td><a href="/cryptocurrency/detalle">{{name}}</a></td>
-        <td>{{symbol}}</td>
-        <td>{{price_usd}} $</td>
-        <td>{{percent_change_24h}}</td>
-        <td>{{percent_change_1h}}</td>
-        <td>{{percent_change_7d}}</td>
+        <form action="/add-favorite" method="POST">
+          <td><a href="/cryptocurrency/coin/detalle">{{name}}</a></td>
+          <td>{{symbol}}</td>
+          <td>{{price_usd}} $</td>
+          <td>{{percent_change_24h}}</td>
+          <td>{{percent_change_1h}}</td>
+          <td>{{percent_change_7d}}</td>
+          <input type="hidden" name="apiID" value={{id}}>
+          <input type="hidden" name="name" value={{name}}>
+          <input type="hidden" name="symbol" value={{symbol}}>
+          <input type="hidden" name="price_usd" value={{price_usd}}>
+          <input type="hidden" name="percent_change_24h" value={{percent_change_24h}}>
+          <input type="hidden" name="percent_change_1h" value={{percent_change_1h}}>
+          <input type="hidden" name="percent_change_7d" value={{percent_change_7d}}>
+          <td><button type="submit">Add to fav</button></td>
+          {{!-- <td><button>Remove</button></td> --}}
+        </form>
       </tr>
       {{/each}}
 
