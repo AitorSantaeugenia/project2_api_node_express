@@ -15,6 +15,7 @@
 
 <!-- BINANCE -->
 <!-- https://www.binance.com/es/trade/ADA_BNB -->
+{{!-- https://www.coinbase.com/es/price/bitcoin --}}
 <h3>List of your favorite cryptocurrencies</h3>
 <table class="table table-dark" id="favoriteCoinsTable">
     <thead>
@@ -44,6 +45,17 @@
                     <input type="hidden" name="id" value={{_id}}>
                     <button type="submit" class="btn btn-danger btn-block">Remove</button>
                 </form>
+            </td>
+        </tr>
+
+        <tr>
+            <td><a href="https://www.binance.com/es/trade/{{symbol}}_BUSD" class="clearA" target="_blank">
+                    <buton class="btn btn-success btn-block">Buy on binance</buton>
+                </a>
+            </td>
+            <td><a href="https://www.coinbase.com/es/price/{{name}}" class="clearA" target="_blank">
+                    <buton class="btn btn-success btn-block">Buy on coinbase</buton>
+                </a>
             </td>
         </tr>
 

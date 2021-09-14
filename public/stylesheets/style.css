@@ -44,3 +44,7 @@ canvas{
 /* .toHideRow:nth-child(0+10){
   display:none;
 } */
+
+.clearA{
+  text-decoration:none !important;
+}
