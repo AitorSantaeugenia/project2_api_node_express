@@ -38,7 +38,8 @@ input:valid {
 }
 canvas{
   width: 80vw;
-  height: 50vh !important;
+  height: 70vh !important;
+  margin-bottom:3%;
 }
 
 /* .toHideRow:nth-child(0+10){

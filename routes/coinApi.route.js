@@ -56,12 +56,12 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 	//console.log('User id:', req.session.currentUser._id);
 	//console.log('Query:', query.id);
 	//res.redirect('/cryptocurrency/list');
-	console.log(idToCheck);
+	//console.log(idToCheck);
 
 	Crypto.find({ apiID: idToCheck }).then((charArray) => {
 		//comprobar si ese apiId ya esta en db cards
 		//console.log(idToCheck);
-		console.log('Whoot', charArray);
+		//console.log('Whoot', charArray);
 		//console.log(charArray.length);
 
 		if (charArray.length === 0) {
