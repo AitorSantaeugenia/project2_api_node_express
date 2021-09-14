@@ -1,6 +1,6 @@
 <div class="dashboard"></div>
 {{#if userInSession}}
-
+{{!-- {{userInSession}} --}}
 <h2>Welcome, {{ userInSession.username }}!</h2>
 <p>This is your dashboard page my friend!</p>
 {{!-- <button>
@@ -43,7 +43,7 @@
             <td>
                 <form action="/delete" method="POST">
                     <input type="hidden" name="id" value={{_id}}>
-                    <button type="submit" class="btn btn-danger btn-block">Remove</button>
+                    <button type="submit" class="btn btn-danger">Remove</button>
                 </form>
             </td>
         </tr>
@@ -57,6 +57,11 @@
                     <buton class="btn btn-success btn-block">Buy on coinbase</buton>
                 </a>
             </td>
+            <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add a note
+                </button>
+            </td>
         </tr>
 
         {{/each}}
@@ -66,5 +71,33 @@
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}}
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add a note to this Crypto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/add-comment" id="usrform">
+                    <textarea name="comment" form="usrform" placeholder="Add a note..." class="form-control"
+                        rows="3"></textarea>
+                    <input type="hidden" name="iduser" value={{ userInSession.id }}>
+                    <input type="hidden" name="idcrypto" value={{_id}}>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
 {{!-- <a href="/"><button class="btn btn-dark">Home</button></a> --}}
 </div>

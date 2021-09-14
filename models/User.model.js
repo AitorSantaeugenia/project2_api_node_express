@@ -25,6 +25,10 @@ const userSchema = new Schema(
 		cryptocurrency: {
 			type: [ Schema.Types.ObjectId ],
 			ref: 'Cryptocurrency'
+		},
+		comments: {
+			type: [ Schema.Types.ObjectId ],
+			ref: 'Comment'
 		}
 	},
 	{

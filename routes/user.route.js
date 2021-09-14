@@ -19,7 +19,7 @@ const Api = require('../services/ApiHandler');
 const coinLoreApi = new Api();
 
 // ---------------------------------------------------------------------------------
-// USER PROFILE - GET
+// DASHBOARD - GET
 // ---------------------------------------------------------------------------------
 router.get('/dashboard', isLoggedIn, (req, res) => {
 	//res.render('users/dashboard', { userInSession: req.session.currentUser });
@@ -42,7 +42,7 @@ router.post('/logout', (req, res, next) => {
 	});
 });
 // ---------------------------------------------------------------------------------
-// DELETE - POST
+// DELETE - Crypto from favourite
 // ---------------------------------------------------------------------------------
 router.post('/delete', isLoggedIn, (req, res) => {
 	const { id } = req.body;
@@ -57,6 +57,12 @@ router.post('/delete', isLoggedIn, (req, res) => {
 // ---------------------------------------------------------------------------------
 router.get('/demo', (req, res) => {
 	res.render('users/demo');
+});
+// ---------------------------------------------------------------------------------
+// ADD COMMENT - POST
+// ---------------------------------------------------------------------------------
+router.get('/add-comment', isLoggedIn, (req, res) => {
+	res.redirect('/dashboard');
 });
 // ---------------------------------------------------------------------------------
 module.exports = router;
