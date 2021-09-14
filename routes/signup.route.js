@@ -104,7 +104,7 @@ router.post('/login', (req, res, next) => {
 				req.session.currentUser = user;
 				res.redirect('/dashboard');
 			} else {
-				res.render('auth/login', { errorMessage: 'Wrong credentials.' });
+				res.render('auth/login', { errorMessage: 'Invalid credentials.' });
 			}
 		})
 		.catch((error) => next(error));

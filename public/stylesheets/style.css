@@ -17,7 +17,7 @@ a {
 }
 
 .container2{
-border:1px solid red;
+/* border:1px solid red; */
 justify-content: center !important;
 align-items: center !important;
 text-align: center !important;
@@ -74,7 +74,7 @@ p.error{
 }
 
 /* Validation side client */
-input:invalid {
+/* input:invalid {
   border: 2px solid red;
 }
 
@@ -84,7 +84,8 @@ input:invalid:required {
 
 input:valid {
   border: 2px solid black;
-}
+} */
+
 canvas{
   width: 80vw;
   height: 80vh !important;
@@ -97,4 +98,8 @@ canvas{
 
 .clearA{
   text-decoration:none !important;
+}
+
+.colorGrey{
+  color:#858484;
 }
