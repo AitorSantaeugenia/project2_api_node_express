@@ -1,11 +1,7 @@
 window.onload = () => {
 	// Historical dates
 	// Line chart https://www.chartjs.org/docs/latest/
-	import { jsPDF } from 'jspdf';
-	const pdf1 = new jsPDF();
-	const pdf2 = new jsPDF();
-	const pdf3 = new jsPDF();
-	const pdf4 = new jsPDF();
+
 	const url = 'http://api.coindesk.com/v1/bpi/historical/close.json';
 	axios.get(url).then((responseFromAPI) => {
 		//console.log(responseFromAPI);
@@ -282,5 +278,15 @@ window.onload = () => {
 			});
 		});
 	});
-	// Graph for currencies
 };
+// Graph for currencies
+const clickToPdf = document.getElementById('downloadPdf');
+//var clickToPdf = document.getElementById('downloadPdf');
+var canvas = document.getElementById('myChartTwo');
+clickToPdf.addEventListener('click', () => {
+	canvas.toBlob(function(blob) {
+		var pdf = new jsPDF('p', 'px', [ 400, 600 ]);
+		pdf.addImage(canvas, 0, 0, 400, 600);
+		pdf.save('chartTopCurrency.pdf');
+	});
+});

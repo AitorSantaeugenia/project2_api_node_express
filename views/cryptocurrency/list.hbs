@@ -3,8 +3,22 @@
 
   {{!-- {{#each coins.data}}
   <h1>{{name}}</h1> --}}
-  <canvas id="myChartTwo" width='400px' height='400px'></canvas>
+  <!-- Extra large modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Top 10 crypto
+    chart</button>
 
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <a href="#" id="downloadPdf">Download Report Page as PDF</a>
+        <canvas id="myChartTwo" width='400px' height='400px'></canvas>
+      </div>
+    </div>
+  </div>
+  <!-- Extra large modal -->
+
+  <!-- Table coins content -->
   <input type="text" id="myInput" onkeyup="searchCrypto()" placeholder="Search crypto by name..">
   <table class="table" id="table" class="table table-striped table-bordered table-sm">
     <thead class="thead-dark">
@@ -20,6 +34,7 @@
       </tr>
     </thead>
     <tbody>
+      {{!-- if ispositive stylecolorgreen else stylecolorred --}}
       {{#each coins.data}}
       <tr class="toHideRow">
         <form action="/add-favorite" method="POST">
@@ -45,5 +60,6 @@
     </tbody>
   </table>
 
-  <a href="/cryptocurrency/{{start}}"><button>View 100 more</button></a>
+  <a href="/cryptocurrency/{{start}}"><button class="btn btn-light">View 100 more</button></a>
+  <!-- Table coins content -->
 </div>

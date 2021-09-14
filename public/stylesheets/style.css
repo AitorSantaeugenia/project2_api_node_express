@@ -1,27 +1,77 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
 a {
   color: #00B7FF;
 }
 
+.container{
+  min-width:100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
 .container2{
-  border:1px solid rgb(0, 0, 0);
+border:1px solid red;
+justify-content: center !important;
+align-items: center !important;
+text-align: center !important;
+min-height: 90vh;
+max-height: 90vh;
+}
+
+.textDivTitleLogin{
+  max-width:100%;
+  min-width: 100%;
+}
+
+#form{
+  min-width: 500px;
+  max-width: 500px;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
 }
 
 .btnInputIndex{
   margin-bottom:10px;
 }
 
-.btnInputIndex:hover{
-  color:red !important;
+#borderDivHolder{
+  min-width: 50vw !important;
+  min-width: 50vw !important;
+  padding: 50px 50px;
+  border: 2px solid rgb(0, 0, 0);
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  border-radius: 50px;
+
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+p.error{
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .maxWidthInput{
   width: 500px;
 }
 
+#ulNavbar{
+  width: 100% !important;
+  justify-content:right;
+}
 
 /* Validation side client */
 input:invalid {

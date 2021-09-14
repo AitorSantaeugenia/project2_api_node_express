@@ -59,7 +59,7 @@ router.post('/signup', (req, res, next) => {
 			});
 		})
 		.then((userFromDB) => {
-			console.log('Newly created user is: ', userFromDB);
+			//console.log('Newly created user is: ', userFromDB);
 			res.redirect('/dashboard');
 		})
 		.catch((error) => {
@@ -84,7 +84,7 @@ router.get('/login', (req, res) => res.render('auth/login'));
 // LOGIN POST
 // ---------------------------------------------------------------------------------
 router.post('/login', (req, res, next) => {
-	console.log('SESSION =====> ', req.session);
+	//console.log('SESSION =====> ', req.session);
 	const { email, password } = req.body;
 
 	if (email === '' || password === '') {
@@ -104,7 +104,7 @@ router.post('/login', (req, res, next) => {
 				req.session.currentUser = user;
 				res.redirect('/dashboard');
 			} else {
-				res.render('auth/login', { errorMessage: 'Incorrect password.' });
+				res.render('auth/login', { errorMessage: 'Wrong credentials.' });
 			}
 		})
 		.catch((error) => next(error));

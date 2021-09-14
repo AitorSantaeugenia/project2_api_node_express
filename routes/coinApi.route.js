@@ -29,8 +29,11 @@ router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 	coinLoreApi
 		.getAllCoins100(start)
 		.then((allCoins100) => {
+			//if allcoins100 > 0
+			// allcoins100.isPositive()
 			res.render(`cryptocurrency/list`, {
 				coins: allCoins100.data,
+				// allcoins100 : isPositive
 				start,
 				userInSession: req.session.currentUser
 			});
