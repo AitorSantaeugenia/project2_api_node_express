@@ -2,9 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 // // Import user
-// const User = require('../models/User.model');
-// // Import mongoose
-// const mongoose = require('mongoose');
+const User = require('../models/User.model');
+// Import Crypto
+const Crypto = require('../models/Crypto.model');
+// Import mongoose
+const mongoose = require('mongoose');
 
 // // require bcryptJS
 // const bcryptjs = require('bcryptjs');
@@ -19,8 +21,15 @@ const coinLoreApi = new Api();
 // ---------------------------------------------------------------------------------
 // USER PROFILE - GET
 // ---------------------------------------------------------------------------------
-router.get('/userProfile', isLoggedIn, (req, res) => {
-	res.render('users/user-profile', { userInSession: req.session.currentUser });
+router.get('/dashboard', isLoggedIn, (req, res) => {
+	//res.render('users/dashboard', { userInSession: req.session.currentUser });
+
+	User.findById(req.session.currentUser._id)
+		.populate('cryptocurrency')
+		.then((user) => {
+			res.render('users/dashboard', { userInSession: user });
+		})
+		.catch((error) => console.log(error));
 });
 
 // ---------------------------------------------------------------------------------
@@ -33,5 +42,15 @@ router.post('/logout', (req, res, next) => {
 	});
 });
 // ---------------------------------------------------------------------------------
-
+// LOGOUT - POST
+// ---------------------------------------------------------------------------------
+router.post('/delete', isLoggedIn, (req, res) => {
+	const { id } = req.body;
+	User.findByIdAndUpdate(req.session.currentUser._id, { $pull: { cryptocurrency: id } })
+		.then(() => {
+			res.redirect('/dashboard');
+		})
+		.catch((err) => console.log(err));
+});
+// ---------------------------------------------------------------------------------
 module.exports = router;

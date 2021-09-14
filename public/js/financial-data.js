@@ -67,8 +67,8 @@ window.onload = () => {
 		//Get key
 		const labels = Object.keys(responseFromAPI.data.data);
 		const prices = labels.map((key) => responseFromAPI.data.data[key]);
-		console.log(prices);
-		console.log(labels);
+		//console.log(prices);
+		//console.log(labels);
 		// console.log(prices);
 		// console.log(Math.min(...prices));
 		// console.log(Math.max(...prices));
@@ -141,7 +141,7 @@ window.onload = () => {
 		//console.log(startingDate);
 		//console.log(endingDate);
 		const url = `http://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=BTC`;
-		console.log(url);
+		//console.log(url);
 		axios.get(url).then((responseFromAPI) => {
 			//console.log(responseFromAPI);
 			const labels = Object.keys(responseFromAPI.data.bpi);
@@ -213,7 +213,7 @@ window.onload = () => {
 			url = `http://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=${currency}`;
 		}
 
-		console.log(url);
+		//console.log(url);
 		axios.get(url).then((responseFromAPI) => {
 			//console.log(responseFromAPI);
 			const labels = Object.keys(responseFromAPI.data.bpi);

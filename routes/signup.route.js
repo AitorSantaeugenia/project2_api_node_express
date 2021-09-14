@@ -60,7 +60,7 @@ router.post('/signup', (req, res, next) => {
 		})
 		.then((userFromDB) => {
 			console.log('Newly created user is: ', userFromDB);
-			res.redirect('/userProfile');
+			res.redirect('/dashboard');
 		})
 		.catch((error) => {
 			if (error instanceof mongoose.Error.ValidationError) {
@@ -102,7 +102,7 @@ router.post('/login', (req, res, next) => {
 			} else if (bcryptjs.compareSync(password, user.passwordHash)) {
 				//******* SAVE THE USER IN THE SESSION ********//
 				req.session.currentUser = user;
-				res.redirect('/userProfile');
+				res.redirect('/dashboard');
 			} else {
 				res.render('auth/login', { errorMessage: 'Incorrect password.' });
 			}

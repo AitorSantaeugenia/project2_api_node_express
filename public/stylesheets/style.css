@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -38,7 +37,7 @@ input:valid {
 }
 canvas{
   width: 80vw;
-  height: 70vh !important;
+  height: 80vh !important;
   margin-bottom:3%;
 }
 

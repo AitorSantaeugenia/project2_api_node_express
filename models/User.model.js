@@ -24,7 +24,7 @@ const userSchema = new Schema(
 		},
 		cryptocurrency: {
 			type: [ Schema.Types.ObjectId ],
-			ref: 'Crypto'
+			ref: 'Cryptocurrency'
 		}
 	},
 	{
