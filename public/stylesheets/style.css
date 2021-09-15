@@ -139,7 +139,10 @@ input:valid {
 #myChart{
   height: 80vh !important;
 }
+#myChartTwo{
+  height: 70vh !important;
 
+}
 
 /* .toHideRow:nth-child(0+10){
   display:none;
@@ -164,4 +167,18 @@ input:valid {
 
 .breadcrumb-item{
   font-size:14px !important;
+}
+
+#downloadPdf{
+  margin-bottom:10px;
+}
+
+#tableListCurrency td{ 
+  padding: 0 !important;
+  vertical-align: inherit !important;
+}
+
+.currencyDivList{
+  border:1px solid red;
+  margin-bottom:15px;
 }

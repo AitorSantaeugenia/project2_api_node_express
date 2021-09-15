@@ -38,7 +38,7 @@ router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 				userInSession: req.session.currentUser
 			});
 			//res.send(allCoins100.data);
-			//console.log(allCoins100.data);
+			//console.log(allCoins100.data.);
 		})
 		.catch((err) => console.log(err));
 });

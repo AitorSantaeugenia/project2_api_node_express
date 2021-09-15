@@ -5,37 +5,39 @@
       <li class="breadcrumb-item active" aria-current="#">Crypto</li>
     </ol>
   </nav>
-  <h1>Cryptocurrency list</h1>
+  <div class="currencyDivList">
+    <h1>Cryptocurrency list</h1>
 
-  {{!-- {{#each coins.data}}
-  <h1>{{name}}</h1> --}}
-  <!-- Extra large modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Top 10 crypto
-    chart</button>
+    {{!-- {{#each coins.data}}
+    <h1>{{name}}</h1> --}}
+    <!-- Extra large modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Top 10 crypto
+      chart</button>
 
-  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-      <div class="modal-content">
-        <a href="#" id="downloadPdf" class="clearA marginRight10" style="text-decoration: none; margin-top:10px">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" class="bi bi-download"
-            viewBox="0 0 16 16">
-            <path
-              d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-            <path
-              d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-          </svg>
-        </a>
-        <canvas id="myChartTwo" width='400px' height='400px'></canvas>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <a href="#" id="downloadPdf" class="clearA marginRight10" style="text-decoration: none; margin-top:10px">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" class="bi bi-download"
+              viewBox="0 0 16 16">
+              <path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+              <path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+            </svg>
+          </a>
+          <canvas id="myChartTwo" width='400px' height='400px'></canvas>
 
+        </div>
       </div>
     </div>
+    <!-- Extra large modal -->
+    <a href="/cryptocurrency/{{start}}"><button class="btn btn-primary">View 100 more</button></a>
+    <!-- Table coins content -->
+    <input type="text" id="myInput" onkeyup="searchCrypto()" placeholder="Search crypto by name..">
   </div>
-  <!-- Extra large modal -->
-  <a href="/cryptocurrency/{{start}}"><button class="btn btn-primary">View 100 more</button></a>
-  <!-- Table coins content -->
-  <input type="text" id="myInput" onkeyup="searchCrypto()" placeholder="Search crypto by name..">
-  <table class="table" id="table" class="table table-striped table-bordered table-sm">
+  <table class="table" id="tableListCurrency" class="table table-striped table-bordered table-sm">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Currency</th>
@@ -51,11 +53,11 @@
     <tbody>
       {{!-- if ispositive stylecolorgreen else stylecolorred --}}
       {{#each coins.data}}
-      <tr class="toHideRow">
+      <tr>
         <form action="/add-favorite" method="POST">
           <td><a href="/cryptocurrency/coin/detalle">{{name}}</a></td>
           <td>{{symbol}}</td>
-          <td>{{price_usd}} $</td>
+          <td>$ {{price_usd}}</td>
           <td>{{percent_change_24h}}</td>
           <td>{{percent_change_1h}}</td>
           <td>{{percent_change_7d}}</td>
