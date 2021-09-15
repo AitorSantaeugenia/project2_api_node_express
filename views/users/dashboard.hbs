@@ -1,8 +1,12 @@
 <div class="dashboard"></div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="#">Dashboard</li>
+    </ol>
+</nav>
 {{#if userInSession}}
 {{!-- {{userInSession}} --}}
-<h2>Welcome, {{ userInSession.username }}!</h2>
-<p>This is your dashboard page my friend!</p>
 {{!-- <button>
     <a href="/dashboard">Reload the page</a>
 </button> --}}
@@ -63,7 +67,6 @@
                 </button>
             </td>
         </tr>
-
         {{/each}}
     </tbody>
 </table>

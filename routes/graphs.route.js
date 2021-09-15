@@ -4,7 +4,7 @@ const router = express.Router();
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 
 //First 100 cryptos
-router.get('/cryptocurrency/:coin/detalle', (req, res) => {
+router.get('/cryptocurrency/:coin/detalle', isLoggedIn, (req, res) => {
 	res.render('cryptocurrency/details');
 });
 

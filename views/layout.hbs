@@ -41,19 +41,24 @@
             <li class="nav-item">
               <a class="nav-link" href="/stocks">Stocks</a>
             </li>
+            {{#if userInSession}}
             <li class="nav-item">
               <a class="nav-link" href="/dashboard">Dashboard</a>
             </li>
+            {{/if}}
             <li class="nav-item">
               <a class="nav-link" href="/login">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/signup">Register</a>
             </li>
+            {{#if userInSession}}
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <form action="/logout" method="POST">
+                <button class="btn btn-small">Logout</button>
+              </form>
             </li>
-
+            {{/if}}
           </ul>
         </div>
       </div>

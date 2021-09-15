@@ -1,18 +1,41 @@
 <div class='container2'>
-    <a href="#" id="downloadPdf2">Download Report Page as PDF</a>
+    <nav aria-label="breadcrumb d-flex">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/cryptocurrency/-100">Crypto</a></li>
+            <li class="breadcrumb-item active" aria-current="#">Coin - detail</li>
+        </ol>
+    </nav>
+
     <canvas id="myChart" width='400px' height='400px'></canvas>
     {{!-- Selecting dates --}}
-    <input type="date" id='startingDate'>
-    <input type="date" id='endingDate'>
-    <button id='searchDates'>Select Dates</button>
-    {{!-- Selecting currency --}}
-    <label for="currency">Select currency:</label>
-    <select name="currency" id="currency">
-        <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-    </select>
-    {{!-- Selecting MIN / MAX prices --}}
-    <br><br>
-    <label for="maxPrice">Max. current price:</label><input type="text" id='maxPrice' disabled><br>
-    <label for="minPrice">Min. current price:</label><input type="text" id='minPrice' disabled>
+    <div class="divButtonsGraphCoin d-flex bg-dark">
+        <div class="divButtonGraphCoinInsider">
+            <input type="date" id='startingDate'>
+            <input type="date" id='endingDate'>
+            <button id='searchDates' class="btn btn-small2">Select</button>
+            {{!-- Selecting currency --}}
+
+            <select name="currency" id="currency" class="form-select">
+                <option selected disabled>Select currency</option>
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+            </select>
+        </div>
+
+        {{!-- Selecting MIN / MAX prices --}}
+        <div class="divButtonGraphCoinInsider">
+            <label for="maxPrice">Max. </label><input type="text" id='maxPrice' disabled>
+            <label for="minPrice">Min. </label><input type="text" id='minPrice' disabled>
+            <a href="#" id="downloadPdf2" class="clearA marginRight10" style="text-decoration: none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor"
+                    class="bi bi-download" viewBox="0 0 16 16">
+                    <path
+                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+                    <path
+                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+                </svg>
+            </a>
+        </div>
+    </div>
 </div>

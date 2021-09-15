@@ -8,7 +8,7 @@ a {
 }
 
 .container{
-  min-width:100vw !important;
+  min-width:99vw !important;
   margin: 0 !important;
   padding: 0 !important;
   justify-content: center !important;
@@ -23,11 +23,32 @@ align-items: center !important;
 text-align: center !important;
 min-height: 90vh;
 max-height: 90vh;
+
 }
 
 .textDivTitleLogin{
   max-width:100%;
   min-width: 100%;
+}
+
+.btn-small {
+  color: #fff !important;
+  background-color: #850310 !important;
+  border-color: #850310 !important;
+  height: 25px !important;
+  line-height: 0 !important;
+  font-size: 12px !important;
+  margin-top:8px !important;
+}
+
+.btn-small2 {
+  color: #fff !important;
+  background-color: #850310 !important;
+  border-color: #850310 !important;
+  height: 25px !important;
+  line-height: 0 !important;
+  font-size: 12px !important;
+  margin-top:-3px;
 }
 
 #form{
@@ -38,8 +59,33 @@ max-height: 90vh;
   text-align: center !important;
 }
 
+.divButtonsGraphCoin{
+  /* border:1px solid red; */
+  margin-left:1px;
+  padding:65px;
+  color:white;
+  justify-content: center;
+  
+}
+.divButtonGraphCoinInsider{
+  /* border:1px solid red; */
+  padding:10px;
+}
+
 .btnInputIndex{
   margin-bottom:10px;
+}
+
+#maxPrice{
+  color:rgb(4, 102, 61);
+  text-align: center;
+  width:140px;
+}
+
+#minPrice{
+  color:#850310;
+  text-align: center;
+  width:140px;
 }
 
 #borderDivHolder{
@@ -51,7 +97,6 @@ max-height: 90vh;
   align-items: center !important;
   text-align: center !important;
   border-radius: 50px;
-
 }
 
 p {
@@ -86,11 +131,15 @@ input:valid {
   border: 2px solid black;
 } */
 
-canvas{
+/* canvas{
   width: 80vw;
   height: 80vh !important;
   margin-bottom:3%;
+} */
+#myChart{
+  height: 80vh !important;
 }
+
 
 /* .toHideRow:nth-child(0+10){
   display:none;
@@ -100,6 +149,19 @@ canvas{
   text-decoration:none !important;
 }
 
+.marginRight10{
+  margin-left:20px;
+}
+
 .colorGrey{
   color:#858484;
+}
+
+.chartDiv{
+  min-width: 500px !important;
+  max-width: 500px !important;
+}
+
+.breadcrumb-item{
+  font-size:14px !important;
 }

@@ -16,8 +16,8 @@ window.onload = () => {
 		//Adding min max prices to input
 		let minPrice = document.getElementById('minPrice');
 		let maxPrice = document.getElementById('maxPrice');
-		maxPrice.value = maximumPrice + ' $';
-		minPrice.value = minimumPrice + ' $';
+		maxPrice.value = '$ ' + maximumPrice;
+		minPrice.value = '$ ' + minimumPrice;
 
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -26,25 +26,11 @@ window.onload = () => {
 				labels,
 				datasets: [
 					{
-						label: 'Prices of bitcoin price index',
+						label: 'Value of coin',
 						data: prices,
-						backgroundColor: [
-							'rgba(255, 99, 132, 0.2)',
-							'rgba(54, 162, 235, 0.2)',
-							'rgba(255, 206, 86, 0.2)',
-							'rgba(75, 192, 192, 0.2)',
-							'rgba(153, 102, 255, 0.2)',
-							'rgba(255, 159, 64, 0.2)'
-						],
-						borderColor: [
-							'rgba(255, 99, 132, 1)',
-							'rgba(54, 162, 235, 1)',
-							'rgba(255, 206, 86, 1)',
-							'rgba(75, 192, 192, 1)',
-							'rgba(153, 102, 255, 1)',
-							'rgba(255, 159, 64, 1)'
-						],
-						borderWidth: 1
+						backgroundColor: [ 'rgba(167, 235, 211, 0.5)' ],
+						borderColor: [ 'rgba(38, 199, 131, 1)' ],
+						borderWidth: 2
 					}
 				]
 			},
@@ -155,8 +141,8 @@ window.onload = () => {
 			//Adding min max prices to input
 			let minPrice = document.getElementById('minPrice');
 			let maxPrice = document.getElementById('maxPrice');
-			maxPrice.value = maximumPrice + ' $';
-			minPrice.value = minimumPrice + ' $';
+			maxPrice.value = '$ ' + maximumPrice;
+			minPrice.value = '$ ' + minimumPrice;
 			const ctx = document.getElementById('myChart').getContext('2d');
 			const myChart = new Chart(ctx, {
 				type: 'line',
@@ -164,24 +150,10 @@ window.onload = () => {
 					labels,
 					datasets: [
 						{
-							label: 'Prices of bitcoin price index',
+							label: 'Value of coin',
 							data: prices,
-							backgroundColor: [
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(255, 159, 64, 0.2)'
-							],
-							borderColor: [
-								'rgba(255, 99, 132, 1)',
-								'rgba(54, 162, 235, 1)',
-								'rgba(255, 206, 86, 1)',
-								'rgba(75, 192, 192, 1)',
-								'rgba(153, 102, 255, 1)',
-								'rgba(255, 159, 64, 1)'
-							],
+							backgroundColor: [ 'rgba(167, 235, 211, 0.5)' ],
+							borderColor: [ 'rgba(38, 199, 131, 1)' ],
 							borderWidth: 1
 						}
 					]
@@ -227,8 +199,8 @@ window.onload = () => {
 			//Adding min max prices to input
 			let minPrice = document.getElementById('minPrice');
 			let maxPrice = document.getElementById('maxPrice');
-			maxPrice.value = maximumPrice + ' $';
-			minPrice.value = minimumPrice + ' $';
+			maxPrice.value = '$ ' + maximumPrice;
+			minPrice.value = '$ ' + minimumPrice;
 
 			const ctx = document.getElementById('myChart').getContext('2d');
 			const myChart = new Chart(ctx, {
@@ -237,24 +209,10 @@ window.onload = () => {
 					labels,
 					datasets: [
 						{
-							label: [ 'Prices of bitcoin price index' ],
+							label: [ 'Value of coin' ],
 							data: prices,
-							backgroundColor: [
-								'rgba(255, 99, 132, 0.2)',
-								'rgba(54, 162, 235, 0.2)',
-								'rgba(255, 206, 86, 0.2)',
-								'rgba(75, 192, 192, 0.2)',
-								'rgba(153, 102, 255, 0.2)',
-								'rgba(255, 159, 64, 0.2)'
-							],
-							borderColor: [
-								'rgba(255, 99, 132, 1)',
-								'rgba(54, 162, 235, 1)',
-								'rgba(255, 206, 86, 1)',
-								'rgba(75, 192, 192, 1)',
-								'rgba(153, 102, 255, 1)',
-								'rgba(255, 159, 64, 1)'
-							],
+							backgroundColor: [ 'rgba(167, 235, 211, 0.5)' ],
+							borderColor: [ 'rgba(38, 199, 131, 1)' ],
 							borderWidth: 1
 						}
 					]
@@ -278,15 +236,27 @@ window.onload = () => {
 			});
 		});
 	});
+
+	// Graph to download
+	const clickToPdf2 = document.getElementById('downloadPdf2');
+	//var clickToPdf = document.getElementById('downloadPdf');
+	let canvas2 = document.getElementById('myChart');
+	clickToPdf2.addEventListener('click', () => {
+		canvas2.toBlob(function(blob) {
+			let pdf = new jsPDF('p', 'px', [ 400, 400 ]);
+			pdf.addImage(canvas2, 0, 0, 400, 400);
+			pdf.save('chartCurrentCoin.pdf');
+		});
+	});
 };
 // Graph for currencies
 const clickToPdf = document.getElementById('downloadPdf');
 //var clickToPdf = document.getElementById('downloadPdf');
-var canvas = document.getElementById('myChartTwo');
+let canvas = document.getElementById('myChartTwo');
 clickToPdf.addEventListener('click', () => {
 	canvas.toBlob(function(blob) {
-		var pdf = new jsPDF('p', 'px', [ 400, 600 ]);
-		pdf.addImage(canvas, 0, 0, 400, 600);
+		let pdf = new jsPDF('p', 'px', [ 400, 400 ]);
+		pdf.addImage(canvas, 0, 0, 400, 400);
 		pdf.save('chartTopCurrency.pdf');
 	});
 });
