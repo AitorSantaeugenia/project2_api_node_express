@@ -217,3 +217,11 @@ input:valid {
 #favoriteCoinsTable{
   margin: 0 !important;
 }
+
+.imageButtonBin{
+  max-width: 100px;
+}
+
+.theaddarkHeader{
+  background: rgb(19, 18, 18);
+}

@@ -58,7 +58,7 @@
 {{/if}}
 
 <table class="table table-striped table-dark" id="favoriteCoinsTable">
-    <thead>
+    <thead class="theaddarkHeader">
         <tr>
             <th scope="col">Crypto</th>
             <th scope="col">Symbol</th>
@@ -83,16 +83,19 @@
         </tr>
 
         <tr>
-            <td colspan="2"><a href="https://www.binance.com/es/trade/{{symbol}}_BUSD" class="clearA" target="_blank">
-                    <buton class="btn btn-success btn-block">Buy on binance</buton>
+            <td colspan="1"><a href="https://www.binance.com/es/trade/{{symbol}}_BUSD" class="clearA" target="_blank">
+                    {{!-- <buton class="btn btn-success btn-block">Buy on binance</buton> --}}
+                    <img src="/images/binance.png" alt="Binance logo" class="imageButtonBin" style="margin-top:8px">
                 </a>
             </td>
-            <td colspan="2"><a href="https://www.coinbase.com/es/price/{{name}}" class="clearA" target="_blank">
-                    <buton class="btn btn-success btn-block">Buy on coinbase</buton>
+            <td colspan="1"><a href="https://www.coinbase.com/es/price/{{name}}" class="clearA" target="_blank">
+                    {{!-- <buton class="btn btn-success btn-block">Buy on coinbase</buton> --}}
+                    <img src="/images/coinbase.png" alt="Coinbase logo" class="imageButtonBin" style="height: 23px;">
                 </a>
             </td>
-            <td colspan="2" class="text-left">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+            <td colspan="4" class="text-right">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    style="margin-right: 30px;">
                     Add a note
                 </button>
             </td>
