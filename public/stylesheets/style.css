@@ -141,7 +141,8 @@ input:valid {
 }
 #myChartTwo{
   height: 70vh !important;
-
+  padding: 10px;
+  background-color: white !important;
 }
 
 /* .toHideRow:nth-child(0+10){
@@ -152,12 +153,16 @@ input:valid {
   text-decoration:none !important;
 }
 
+#divMarginDifference{
+  padding:0 30px 0 20px !important;
+}
+
 .marginRight10{
-  margin-left:20px;
+  margin-left:20px !important;
 }
 
 .colorGrey{
-  color:#858484;
+  color:#858484 !important;
 }
 
 .chartDiv{
@@ -181,4 +186,14 @@ input:valid {
 .currencyDivList{
   border:1px solid red;
   margin-bottom:15px;
+}
+
+#breadcrumbs{
+  background-color: rgb(216, 216, 216);
+  padding: 0 !important;
+}
+
+.disabledA{
+  font-size:14px;
+  padding-right: 0 !important;
 }

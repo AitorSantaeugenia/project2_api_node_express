@@ -1,9 +1,34 @@
 <div class='container'>
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="/">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="#">Crypto</li>
-    </ol>
+  <nav id="breadcrumbs" class="navbar navbar-expand-lg">
+    <div class="container-fluid navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"
+      id="divMarginDifference">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto breadcrumbs">
+          <li class="nav-item ">
+            <a class="nav-link disabledA" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link disabledA">/</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabledA colorGrey">Crypto</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          {{#if userInSession}}
+          <li class="nav-item ">
+            <a class="nav-link disabledA">Welcome <strong>{{userInSession.username}}</strong></a>
+          </li>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
   </nav>
   <div class="currencyDivList">
     <h1>Cryptocurrency list</h1>
@@ -18,6 +43,15 @@
       aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
+          <canvas id="myChartTwo" width='400px' height='400px'></canvas>
+          <select name="chartTwo" id="typeChart" class="form-select">
+            <option selected disabled>Select type chart</option>
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+            <option value="radar">Radar</option>
+            <option value="doughnut">Doughnut</option>
+            <option value="pie">Pie</option>
+          </select>
           <a href="#" id="downloadPdf" class="clearA marginRight10" style="text-decoration: none; margin-top:10px">
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="28" fill="currentColor" class="bi bi-download"
               viewBox="0 0 16 16">
@@ -27,8 +61,6 @@
                 d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
             </svg>
           </a>
-          <canvas id="myChartTwo" width='400px' height='400px'></canvas>
-
         </div>
       </div>
     </div>
