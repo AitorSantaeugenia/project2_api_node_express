@@ -136,6 +136,12 @@ input:valid {
   height: 80vh !important;
   margin-bottom:3%;
 } */
+
+#logoImageCorporation{
+  width: 200px;
+  height: 100px;
+}
+
 #myChart{
   height: 70vh !important;
   width: 70vw !important;
