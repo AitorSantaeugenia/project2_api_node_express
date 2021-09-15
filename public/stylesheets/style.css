@@ -137,7 +137,9 @@ input:valid {
   margin-bottom:3%;
 } */
 #myChart{
-  height: 80vh !important;
+  height: 70vh !important;
+  width: 70vw !important;
+  margin:0 auto !important;
 }
 #myChartTwo{
   height: 70vh !important;
