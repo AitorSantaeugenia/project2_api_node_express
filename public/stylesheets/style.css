@@ -224,4 +224,15 @@ input:valid {
 
 .theaddarkHeader{
   background: rgb(19, 18, 18);
+  color:white;
+}
+/* https://www.w3.org/TR/selectors-3/#attribute-substrings */
+td[data-monetary-amount^="-"] {
+  color: red !important;
+}
+
+.starIcon{
+  color:rgb(180, 180, 6);
+  border: none !important;
+  background:none !important;
 }

@@ -101,7 +101,7 @@
         <th scope="col">% 24h</th>
         <th scope="col">% 1d</th>
         <th scope="col">% 7d</th>
-        <th scope="col">Add to dashboard</th>
+        <th scope="col">Watchlist</th>
         {{!-- <th scope="col">Remove</th> --}}
       </tr>
     </thead>
@@ -112,10 +112,10 @@
         <form action="/add-favorite" method="POST">
           <td><a href="/cryptocurrency/coin/detalle">{{name}}</a></td>
           <td>{{symbol}}</td>
-          <td>$ {{price_usd}}</td>
-          <td>{{percent_change_24h}}</td>
-          <td>{{percent_change_1h}}</td>
-          <td>{{percent_change_7d}}</td>
+          <td style="color:rgb(100, 100, 230)">$ {{price_usd}}</td>
+          <td data-monetary-amount={{percent_change_24h}} style="color:green">{{percent_change_24h}}</td>
+          <td data-monetary-amount={{percent_change_1h}} style="color:green">{{percent_change_1h}}</td>
+          <td data-monetary-amount={{percent_change_7d}} style="color:green">{{percent_change_7d}}</td>
           <input type="hidden" name="apiID" value={{id}}>
           <input type="hidden" name="name" value={{name}}>
           <input type="hidden" name="symbol" value={{symbol}}>
@@ -123,7 +123,16 @@
           <input type="hidden" name="percent_change_24h" value={{percent_change_24h}}>
           <input type="hidden" name="percent_change_1h" value={{percent_change_1h}}>
           <input type="hidden" name="percent_change_7d" value={{percent_change_7d}}>
-          <td><button type="submit" class="btn btn-success">Watchlist</button></td>
+          {{!-- <td><button type="submit" class="btn btn-success">Watchlist</button></td> --}}
+          <td>
+            <button type="submit" class="starIcon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star"
+                viewBox="0 0 16 16">
+                <path
+                  d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+              </svg>
+            </button>
+          </td>
           {{!-- <td><button>Remove</button></td> --}}
         </form>
       </tr>
