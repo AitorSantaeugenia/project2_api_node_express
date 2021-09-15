@@ -21,7 +21,7 @@ require('./config/session.config')(app);
 require('./config')(app);
 
 // default value for title local
-const projectName = 'project2_ironhack';
+const projectName = 'Market scraper';
 const capitalized = (string) => string[0].toUpperCase() + string.slice(1).toLowerCase();
 
 app.locals.title = `${capitalized(projectName)}`;
@@ -38,11 +38,11 @@ app.use('/', signup);
 const crypto = require('./routes/coinApi.route');
 app.use('/', crypto);
 
-//cryptocurrency routes
+//graphsjs routes
 const graphs = require('./routes/graphs.route');
 app.use('/', graphs);
 
-//cryptocurrency routes
+//user routes
 const dashboard = require('./routes/user.route');
 app.use('/', dashboard);
 

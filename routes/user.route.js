@@ -55,14 +55,18 @@ router.post('/delete', isLoggedIn, (req, res) => {
 // ---------------------------------------------------------------------------------
 // DEMO - GET
 // ---------------------------------------------------------------------------------
-router.get('/demo', (req, res) => {
-	res.render('users/demo');
+router.get('/demo', isLoggedIn, (req, res) => {
+	res.render('users/demo', {
+		userInSession: req.session.currentUser
+	});
 });
 // ---------------------------------------------------------------------------------
 // ADD COMMENT - POST
 // ---------------------------------------------------------------------------------
 router.get('/add-comment', isLoggedIn, (req, res) => {
-	res.redirect('/dashboard');
+	res.redirect('/dashboard', {
+		userInSession: req.session.currentUser
+	});
 });
 // ---------------------------------------------------------------------------------
 module.exports = router;
