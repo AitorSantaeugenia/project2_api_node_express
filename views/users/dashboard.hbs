@@ -34,6 +34,7 @@
 {{#if userInSession}}
 <h3 class="dashboardTittle">Crypto watchlist</h3>
 {{#if message}}
+<!-- MODAL -->
 <div class="modal show" id="modalExampleDashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -53,9 +54,10 @@
         </div>
     </div>
 </div>
+<!-- MODAL -->
 {{/if}}
 
-<table class="table table-dark" id="favoriteCoinsTable">
+<table class="table table-striped table-dark" id="favoriteCoinsTable">
     <thead>
         <tr>
             <th scope="col">Crypto</th>
@@ -65,7 +67,7 @@
             <th scope="col">% 1d</th>
             <th scope="col">% 7d</th>
             <th scope="col">Rank</th>
-            <th scope="col">Remove from fav.</th>
+
         </tr>
     </thead>
     <tbody>
@@ -78,27 +80,27 @@
             <td>{{percent_change_1h}}</td>
             <td>{{percent_change_7d}}</td>
             <td>{{apiID}}</td>
+        </tr>
+
+        <tr>
+            <td colspan="2"><a href="https://www.binance.com/es/trade/{{symbol}}_BUSD" class="clearA" target="_blank">
+                    <buton class="btn btn-success btn-block">Buy on binance</buton>
+                </a>
+            </td>
+            <td colspan="2"><a href="https://www.coinbase.com/es/price/{{name}}" class="clearA" target="_blank">
+                    <buton class="btn btn-success btn-block">Buy on coinbase</buton>
+                </a>
+            </td>
+            <td colspan="2" class="text-left">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Add a note
+                </button>
+            </td>
             <td>
                 <form action="/delete" method="POST">
                     <input type="hidden" name="id" value={{_id}}>
                     <button type="submit" class="btn btn-danger">Remove</button>
                 </form>
-            </td>
-        </tr>
-
-        <tr>
-            <td><a href="https://www.binance.com/es/trade/{{symbol}}_BUSD" class="clearA" target="_blank">
-                    <buton class="btn btn-success btn-block">Buy on binance</buton>
-                </a>
-            </td>
-            <td><a href="https://www.coinbase.com/es/price/{{name}}" class="clearA" target="_blank">
-                    <buton class="btn btn-success btn-block">Buy on coinbase</buton>
-                </a>
-            </td>
-            <td>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Add a note
-                </button>
             </td>
         </tr>
         {{/each}}
@@ -136,18 +138,8 @@
     </div>
 </div>
 <!-- Modal -->
-{{!-- <a href="/"><button class="btn btn-dark">Home</button></a> --}}
 <script src="https://khaalipaper.com/js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#exampleModal').modal({
-            show: false
-        }).on('hidden.bs.modal', function () {
-            $(this).find('video')[0].pause();
-        });
-    });
-</script>
 <script type="text/javascript">
     $(window).on('load', function () {
         $('#modalExampleDashboard').modal('show');

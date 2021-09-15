@@ -35,10 +35,14 @@ router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 				coins: allCoins100.data,
 				// allcoins100 : isPositive
 				start,
-				userInSession: req.session.currentUser
+				userInSession: req.session.currentUser,
+				message: req.session.sessionFlash
 			});
-			//res.send(allCoins100.data);
-			//console.log(allCoins100.data.);
+
+			//remove req.session if it exists to not show everytime
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 		})
 		.catch((err) => console.log(err));
 });
@@ -83,10 +87,18 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 						User.findByIdAndUpdate(userID, {
 							$push: { cryptocurrency: charArray[0]._id }
 						}).then(() => {
-							res.redirect('/cryptocurrency/list');
+							req.session.sessionFlash = {
+								type: 'success',
+								message: 'Added cryptocurrency to dashboard.'
+							};
+							res.redirect('/cryptocurrency/list', 301);
 						});
 					} else {
-						res.redirect('/cryptocurrency/list');
+						req.session.sessionFlash = {
+							type: 'success',
+							message: 'Added cryptocurrency to dashboard.'
+						};
+						res.redirect('/cryptocurrency/list', 301);
 					}
 				})
 				.catch((err) => {

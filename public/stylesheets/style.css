@@ -201,6 +201,7 @@ input:valid {
 .currencyDivList{
   border:1px solid red;
   margin-bottom:15px;
+  padding:50px 0 !important;
 }
 
 #breadcrumbs{
@@ -211,4 +212,8 @@ input:valid {
 .disabledA{
   font-size:14px;
   padding-right: 0 !important;
+}
+
+#favoriteCoinsTable{
+  margin: 0 !important;
 }
