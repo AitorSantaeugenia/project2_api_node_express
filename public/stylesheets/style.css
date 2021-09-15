@@ -200,8 +200,11 @@ input:valid {
 
 .currencyDivList{
   border:1px solid red;
-  margin-bottom:15px;
   padding:50px 0 !important;
+}
+
+#myInput{
+  width:400px !important;
 }
 
 #breadcrumbs{
@@ -226,7 +229,8 @@ input:valid {
   background: rgb(19, 18, 18);
   color:white;
 }
-/* https://www.w3.org/TR/selectors-3/#attribute-substrings */
+/* https://www.w3.org/TR/selectors-3/#attribute-substrings 
+https://rpbouman.blogspot.com/2015/04/css-tricks-for-conditional-formatting.html*/
 td[data-monetary-amount^="-"] {
   color: red !important;
 }
@@ -235,4 +239,15 @@ td[data-monetary-amount^="-"] {
   color:rgb(180, 180, 6);
   border: none !important;
   background:none !important;
+}
+
+.bustarIcontton:hover, .starIcon:focus {
+  outline: none;
+}
+
+.starCrypto:hover{
+  width: 20px;       
+  height:20px; 
+  color:rgb(216, 216, 36);
+
 }

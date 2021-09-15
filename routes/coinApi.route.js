@@ -20,20 +20,20 @@ const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 const Api = require('../services/ApiHandler');
 const coinLoreApi = new Api();
 
+//Need to find better behaviour
 //First 100 cryptos /?start=100&limit=100 || This api can't do more
 router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 	let start = Number(req.params.start);
+	if (start === NaN || start <= -101 || start === 'NAN') {
+		start = 0;
+	}
 	start += 100;
 
-	//console.log('aitor', req.session.currentUser);
 	coinLoreApi
 		.getAllCoins100(start)
 		.then((allCoins100) => {
-			//if allcoins100 > 0
-			// allcoins100.isPositive()
 			res.render(`cryptocurrency/list`, {
 				coins: allCoins100.data,
-				// allcoins100 : isPositive
 				start,
 				userInSession: req.session.currentUser,
 				message: req.session.sessionFlash
@@ -60,23 +60,18 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 	} = req.body);
 	const userID = req.session.currentUser._id;
 	const idToCheck = query.apiID;
-	//console.log('User id:', req.session.currentUser._id);
-	//console.log('Query:', query.id);
-	//res.redirect('/cryptocurrency/list');
-	//console.log(idToCheck);
 
 	Crypto.find({ apiID: idToCheck }).then((charArray) => {
-		//comprobar si ese apiId ya esta en db cards
-		//console.log(idToCheck);
-		//console.log('Whoot', charArray);
-		//console.log(charArray.length);
-
 		if (charArray.length === 0) {
 			Crypto.create(query)
 				.then((result) => {
 					console.log('Check this', result.id);
 					User.findByIdAndUpdate(userID, { $push: { cryptocurrency: result.id } }).then(() => {
-						res.redirect('/cryptocurrency/list');
+						req.session.sessionFlash = {
+							type: 'success',
+							message: 'Added cryptocurrency to dashboard.'
+						};
+						res.redirect('/cryptocurrency/-100', 301);
 					});
 				})
 				.catch((err) => console.log(err));
@@ -91,14 +86,14 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 								type: 'success',
 								message: 'Added cryptocurrency to dashboard.'
 							};
-							res.redirect('/cryptocurrency/list', 301);
+							res.redirect('/cryptocurrency/-100', 301);
 						});
 					} else {
 						req.session.sessionFlash = {
 							type: 'success',
 							message: 'Added cryptocurrency to dashboard.'
 						};
-						res.redirect('/cryptocurrency/list', 301);
+						res.redirect('/cryptocurrency/-100', 301);
 					}
 				})
 				.catch((err) => {
