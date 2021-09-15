@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const flash = require('connect-flash');
 // // Import user
 const User = require('../models/User.model');
 // Import Crypto
@@ -27,7 +27,12 @@ router.get('/dashboard', isLoggedIn, (req, res) => {
 	User.findById(req.session.currentUser._id)
 		.populate('cryptocurrency')
 		.then((user) => {
-			res.render('users/dashboard', { userInSession: user });
+			res.render('users/dashboard', { userInSession: user, message: req.session.sessionFlash });
+
+			//remove req.session if it exists to not show everytime
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 		})
 		.catch((error) => console.log(error));
 });
@@ -48,7 +53,13 @@ router.post('/delete', isLoggedIn, (req, res) => {
 	const { id } = req.body;
 	User.findByIdAndUpdate(req.session.currentUser._id, { $pull: { cryptocurrency: id } })
 		.then(() => {
-			res.redirect('/dashboard');
+			// res.redirect('/dashboard');
+			req.session.sessionFlash = {
+				type: 'success',
+				message: 'Deleted cryptocurrency from dashboard.'
+			};
+			res.redirect(301, '/dashboard');
+			//console.log(req.session.sessionFlash);
 		})
 		.catch((err) => console.log(err));
 });

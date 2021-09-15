@@ -136,6 +136,13 @@ input:valid {
   height: 80vh !important;
   margin-bottom:3%;
 } */
+#modalExampleDashboard{
+  margin-top: 30vh;
+}
+
+.dashboardTittle{
+  padding:50px 0 !important;
+}
 
 #logoImageCorporation{
   width: 200px;

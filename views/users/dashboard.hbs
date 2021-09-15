@@ -30,22 +30,31 @@
         </div>
     </div>
 </nav>
-{{#if userInSession}}
-{{!-- {{userInSession}} --}}
-{{!-- <button>
-    <a href="/dashboard">Reload the page</a>
-</button> --}}
-{{!-- <form id="logout-form" action="/logout" method="POST">
-    <button>Logout</button>
-</form> --}}
-{{!-- <h1>{{ userInSession._id }}</h1>
-<h1>{{ userInSession.cryptocurrency }}</h1> --}}
-<!-- TABLA CRYPTOS FAVORITAS -->
 
-<!-- BINANCE -->
-<!-- https://www.binance.com/es/trade/ADA_BNB -->
-{{!-- https://www.coinbase.com/es/price/bitcoin --}}
-<h3>List of your favorite cryptocurrencies</h3>
+{{#if userInSession}}
+<h3 class="dashboardTittle">Crypto watchlist</h3>
+{{#if message}}
+<div class="modal show" id="modalExampleDashboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><strong>Deleted</strong></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{message.message}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/if}}
+
 <table class="table table-dark" id="favoriteCoinsTable">
     <thead>
         <tr>
@@ -128,4 +137,19 @@
 </div>
 <!-- Modal -->
 {{!-- <a href="/"><button class="btn btn-dark">Home</button></a> --}}
-</div>
+<script src="https://khaalipaper.com/js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#exampleModal').modal({
+            show: false
+        }).on('hidden.bs.modal', function () {
+            $(this).find('video')[0].pause();
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(window).on('load', function () {
+        $('#modalExampleDashboard').modal('show');
+    });
+</script>

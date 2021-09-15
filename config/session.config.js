@@ -2,6 +2,7 @@
 
 // require session
 const session = require('express-session');
+const flash = require('connect-flash');
 
 // ADDED: require mongostore
 const MongoStore = require('connect-mongo');
@@ -11,6 +12,7 @@ const mongoose = require('mongoose');
 
 module.exports = (app) => {
 	app.set('trust proxy', 1);
+	app.use(flash());
 
 	app.use(
 		session({
@@ -22,12 +24,9 @@ module.exports = (app) => {
 				secure: process.env.NODE_ENV === 'production',
 				httpOnly: true,
 				maxAge: 60000000
-			}, // ADDED code below !!!
+			},
 			store: MongoStore.create({
 				mongoUrl: process.env.DB_REMOTE
-
-				// ttl => time to live
-				// ttl: 60 * 60 * 24 // 60sec * 60min * 24h => 1 day
 			})
 		})
 	);

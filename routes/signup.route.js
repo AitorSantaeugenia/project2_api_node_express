@@ -15,11 +15,6 @@ const saltRounds = 10;
 const { isLoggedIn, isLoggedOut } = require('../middleware/route-guard.js');
 
 // ---------------------------------------------------------------------------------
-// INDEX GET
-// ---------------------------------------------------------------------------------
-router.get('/', (req, res) => res.render('index', { title: 'App created with Ironhack generator 🚀' }));
-
-// ---------------------------------------------------------------------------------
 // SIGNUP GET
 // ---------------------------------------------------------------------------------
 router.get('/signup', isLoggedOut, (req, res) => res.render('auth/signup'));
