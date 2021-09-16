@@ -74,6 +74,10 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 							message: 'Added cryptocurrency to dashboard.'
 						};
 						res.redirect('/cryptocurrency/-100', 301);
+
+						if (req.session.sessionFlash) {
+							req.session.sessionFlash = [];
+						}
 					});
 				})
 				.catch((err) => console.log(err));
@@ -89,9 +93,21 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 								message: 'Added cryptocurrency to dashboard.'
 							};
 							res.redirect('/cryptocurrency/-100', 301);
+
+							if (req.session.sessionFlash) {
+								req.session.sessionFlash = [];
+							}
 						});
 					} else {
+						req.session.sessionFlash = {
+							type: 'Added',
+							message: 'Added cryptocurrency to dashboard.'
+						};
 						res.redirect('/cryptocurrency/-100', 301);
+
+						if (req.session.sessionFlash) {
+							req.session.sessionFlash = [];
+						}
 					}
 				})
 				.catch((err) => {

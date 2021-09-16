@@ -75,6 +75,10 @@ router.post('/add-comment', isLoggedIn, (req, res) => {
 				};
 				res.redirect('/dashboard', 301, { userInSession: userID });
 			});
+
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 		})
 		.catch((err) => console.log(err));
 });
@@ -101,6 +105,9 @@ router.post('/delete', isLoggedIn, (req, res) => {
 			};
 			res.redirect(301, '/dashboard');
 			//console.log(req.session.sessionFlash);
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 		})
 		.catch((err) => console.log(err));
 });
@@ -120,6 +127,9 @@ router.post('/delete-comment', isLoggedIn, (req, res) => {
 			};
 			res.redirect(301, '/dashboard');
 			//console.log(req.session.sessionFlash);
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 		})
 		.catch((err) => console.log(err));
 });
@@ -137,6 +147,10 @@ router.post('/update-comment', isLoggedIn, (req, res) => {
 				message: 'Updated comment from TODO list.'
 			};
 			res.redirect(301, '/dashboard');
+
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 		})
 		.catch((err) => console.log(err));
 });
