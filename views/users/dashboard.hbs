@@ -40,7 +40,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="modalContentRemoveCr">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><strong>Deleted</strong></h5>
+                <h5 class="modal-title" id="exampleModalLabel"><strong>{{message.type}}</strong></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -84,12 +84,10 @@
 
         <tr>
             <td colspan="1"><a href="https://www.binance.com/es/trade/{{symbol}}_BUSD" class="clearA" target="_blank">
-                    {{!-- <buton class="btn btn-success btn-block">Buy on binance</buton> --}}
                     <img src="/images/binance.png" alt="Binance logo" class="imageButtonBin" style="margin-top:8px">
                 </a>
             </td>
             <td colspan="1"><a href="https://www.coinbase.com/es/price/{{name}}" class="clearA" target="_blank">
-                    {{!-- <buton class="btn btn-success btn-block">Buy on coinbase</buton> --}}
                     <img src="/images/coinbase.png" alt="Coinbase logo" class="imageButtonBin" style="height: 23px;">
                 </a>
             </td>
@@ -106,41 +104,40 @@
                 </form>
             </td>
         </tr>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add a note to this Crypto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/add-comment" id="usrform{{_id}}" method="POST">
+                            <textarea name="comments" form="usrform{{_id}}" placeholder="Add a note..."
+                                class="form-control" rows="3"></textarea>
+                            <input type="hidden" name="idcrypto" value={{_id}}>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         {{/each}}
+        {{!-- {{/each}} --}}
+        {{!-- <input type="hidden" name="iduser" value={{ userInSession.id }}> --}}
+
     </tbody>
 </table>
 <!-- TABLA CRYPTOS FAVORITAS -->
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}}
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add a note to this Crypto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="/add-comment" id="usrform">
-                    <textarea name="comment" form="usrform" placeholder="Add a note..." class="form-control"
-                        rows="3"></textarea>
-                    <input type="hidden" name="iduser" value={{ userInSession.id }}>
-                    <input type="hidden" name="idcrypto" value={{_id}}>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal -->
 <script src="https://khaalipaper.com/js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script type="text/javascript">

@@ -67,7 +67,7 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 		if (charArray.length === 0) {
 			Crypto.create(query)
 				.then((result) => {
-					console.log('Check this', result.id);
+					//console.log('Check this', result.id);
 					User.findByIdAndUpdate(userID, { $push: { cryptocurrency: result.id } }).then(() => {
 						req.session.sessionFlash = {
 							type: 'success',
