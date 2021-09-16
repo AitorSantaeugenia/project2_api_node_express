@@ -156,7 +156,7 @@ input:valid {
 }
 #myChartTwo{
   height: 70vh !important;
-  padding: 10px;
+  padding: 50px;
   background-color: white !important;
 }
 
@@ -198,9 +198,21 @@ input:valid {
   vertical-align: inherit !important;
 }
 
+#typeChart{
+  margin: 0 auto;
+  width: 500px;
+}
+
 .currencyDivList{
-  border:1px solid red;
   padding:50px 0 !important;
+}
+
+#modalContentAdd{
+  background-color: #96afd1;
+}
+
+#modalContentRemoveCr{
+  background-color: #f09393;
 }
 
 #myInput{
@@ -223,7 +235,9 @@ input:valid {
 
 .imageButtonBin{
   max-width: 100px;
+  min-width: 100px;
 }
+
 
 .theaddarkHeader{
   background: rgb(19, 18, 18);
@@ -233,6 +247,11 @@ input:valid {
 https://rpbouman.blogspot.com/2015/04/css-tricks-for-conditional-formatting.html*/
 td[data-monetary-amount^="-"] {
   color: red !important;
+}
+
+.border-btn-danger{
+  border:3px solid rgb(182, 3, 3) !important;
+  color:white !important;
 }
 
 .starIcon{

@@ -32,10 +32,12 @@ router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 	coinLoreApi
 		.getAllCoins100(start)
 		.then((allCoins100) => {
+			//console.log(allCoins100.data.info.coins_num);
 			res.render(`cryptocurrency/list`, {
 				coins: allCoins100.data,
 				start,
 				userInSession: req.session.currentUser,
+				totalcoins: allCoins100.data.info.coins_num,
 				message: req.session.sessionFlash
 			});
 
