@@ -2,7 +2,7 @@ window.onload = () => {
 	// Historical dates
 	// Line chart https://www.chartjs.org/docs/latest/
 
-	const url = 'http://api.coindesk.com/v1/bpi/historical/close.json';
+	const url = 'https://api.coindesk.com/v1/bpi/historical/close.json';
 	axios.get(url).then((responseFromAPI) => {
 		//console.log(responseFromAPI);
 		//Get key
@@ -56,7 +56,7 @@ window.onload = () => {
 		const endingDate = document.getElementById('endingDate').value;
 		//console.log(startingDate);
 		//console.log(endingDate);
-		const url = `http://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=BTC`;
+		const url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=BTC`;
 		//console.log(url);
 		axios.get(url).then((responseFromAPI) => {
 			//console.log(responseFromAPI);
@@ -108,11 +108,11 @@ window.onload = () => {
 		const endingDate = document.getElementById('endingDate').value;
 		const currency = document.getElementById('currency').value;
 
-		let url = `http://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=${currency}`;
+		let url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=${currency}`;
 		if (!startingDate && !endingDate) {
-			url = `http://api.coindesk.com/v1/bpi/historical/close.json?currency=${currency}`;
+			url = `https://api.coindesk.com/v1/bpi/historical/close.json?currency=${currency}`;
 		} else {
-			url = `http://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=${currency}`;
+			url = `https://api.coindesk.com/v1/bpi/historical/close.json?start=${startingDate}&end=${endingDate}&currency=${currency}`;
 		}
 
 		//console.log(url);
