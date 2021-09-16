@@ -30,6 +30,9 @@ router.get('/dashboard', isLoggedIn, (req, res) => {
 		.populate('cryptocurrency')
 		.populate('comments')
 		.then((user) => {
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
 			//console.log(user);
 			res.render('users/dashboard', {
 				userInSession: user,

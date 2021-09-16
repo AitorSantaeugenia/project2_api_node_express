@@ -33,6 +33,10 @@ router.get('/cryptocurrency/:start', isLoggedIn, (req, res) => {
 		.getAllCoins100(start)
 		.then((allCoins100) => {
 			//console.log(allCoins100.data.info.coins_num);
+			if (req.session.sessionFlash) {
+				req.session.sessionFlash = [];
+			}
+
 			res.render(`cryptocurrency/list`, {
 				coins: allCoins100.data,
 				start,
@@ -113,6 +117,9 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 				.catch((err) => {
 					console.log(err);
 				});
+		}
+		if (req.session.sessionFlash) {
+			req.session.sessionFlash = [];
 		}
 	});
 });
