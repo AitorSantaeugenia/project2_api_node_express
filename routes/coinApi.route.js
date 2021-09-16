@@ -70,7 +70,7 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 					//console.log('Check this', result.id);
 					User.findByIdAndUpdate(userID, { $push: { cryptocurrency: result.id } }).then(() => {
 						req.session.sessionFlash = {
-							type: 'success',
+							type: 'Added',
 							message: 'Added cryptocurrency to dashboard.'
 						};
 						res.redirect('/cryptocurrency/-100', 301);
@@ -85,16 +85,12 @@ router.post('/add-favorite', isLoggedIn, (req, res) => {
 							$push: { cryptocurrency: charArray[0]._id }
 						}).then(() => {
 							req.session.sessionFlash = {
-								type: 'success',
+								type: 'Added',
 								message: 'Added cryptocurrency to dashboard.'
 							};
 							res.redirect('/cryptocurrency/-100', 301);
 						});
 					} else {
-						req.session.sessionFlash = {
-							type: 'success',
-							message: 'Added cryptocurrency to dashboard.'
-						};
 						res.redirect('/cryptocurrency/-100', 301);
 					}
 				})
