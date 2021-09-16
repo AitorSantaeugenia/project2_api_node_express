@@ -36,12 +36,21 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" id="modalContentAdd">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"><strong>Added</strong></h5>
+
+
+        <div class="modal-header modalHeaderBlack">
+          <h5 class="modal-title" id="exampleModalLabel"><img src="/images/favicon.png"
+              style="width:20px; height:20px"></img></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="true" style="color:#f00">&times;</span>
           </button>
         </div>
+        <div class="modal-header">
+          <h5 class="modal-title" style="color: rgb(182, 3, 3) !important;"><strong>Added</strong></h5>
+
+        </div>
+
+
         <div class="modal-body">
           {{message.message}}
         </div>
@@ -56,8 +65,6 @@
   <div class="currencyDivList">
     <h1 style="margin-bottom:20px"><img src="/images/cryptologo.png" style="width:40px"></img>ryptocurrency list</h1>
 
-    {{!-- {{#each coins.data}}
-    <h1>{{name}}</h1> --}}
     <!-- Extra large modal -->
     <a type="button" class="btn btn-danger border-btn-danger" data-toggle="modal" data-target=".bd-example-modal-lg">Top
       10

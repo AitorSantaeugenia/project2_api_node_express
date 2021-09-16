@@ -21,7 +21,7 @@ const Api = require('../services/ApiHandler');
 const coinLoreApi = new Api();
 
 // ---------------------------------------------------------------------------------
-// DASHBOARD - GET
+// DASHBOARD - INDEX - GET
 // ---------------------------------------------------------------------------------
 router.get('/dashboard', isLoggedIn, (req, res) => {
 	//res.render('users/dashboard', { userInSession: req.session.currentUser });
@@ -30,6 +30,7 @@ router.get('/dashboard', isLoggedIn, (req, res) => {
 		.populate('cryptocurrency')
 		.populate('comments')
 		.then((user) => {
+			//console.log(user);
 			res.render('users/dashboard', {
 				userInSession: user,
 				message: req.session.sessionFlash
@@ -43,7 +44,7 @@ router.get('/dashboard', isLoggedIn, (req, res) => {
 		.catch((error) => console.log(error));
 });
 // ---------------------------------------------------------------------------------
-// ADD COMMENT - POST
+// DASHBOARD - ADD COMMENT - GET
 // ---------------------------------------------------------------------------------
 router.get('/add-comment', isLoggedIn, (req, res) => {
 	res.redirect('/dashboard', {
@@ -51,8 +52,7 @@ router.get('/add-comment', isLoggedIn, (req, res) => {
 	});
 });
 // ---------------------------------------------------------------------------------
-// ---------------------------------------------------------------------------------
-// DASHBOARD - POST
+// DASHBOARD - ADD-COMMENT - POST
 // ---------------------------------------------------------------------------------
 router.post('/add-comment', isLoggedIn, (req, res) => {
 	//res.render('users/dashboard', { userInSession: req.session.currentUser });
@@ -60,8 +60,11 @@ router.post('/add-comment', isLoggedIn, (req, res) => {
 	const userID = req.session.currentUser._id;
 	const paramsToBD = { comments, user: userID, cryptocurrency: idcrypto };
 
-	console.log(paramsToBD);
+	//crear comentarios
+	//añadir comentario a crypto
+	// comprovar usuario logeado, añadir comment a crypto de dicho usuario
 
+	//console.log(paramsToBD);
 	Comment.create(paramsToBD)
 		.then((result) => {
 			//console.log('Check this', result.id);
@@ -98,6 +101,42 @@ router.post('/delete', isLoggedIn, (req, res) => {
 			};
 			res.redirect(301, '/dashboard');
 			//console.log(req.session.sessionFlash);
+		})
+		.catch((err) => console.log(err));
+});
+// ---------------------------------------------------------------------------------
+// DELETE - Crypto from favourite
+// ---------------------------------------------------------------------------------
+router.post('/delete-comment', isLoggedIn, (req, res) => {
+	const { id } = req.body;
+	//console.log(id);
+
+	Comment.deleteOne({ id })
+		.then(() => {
+			// res.redirect('/dashboard');
+			req.session.sessionFlash = {
+				type: 'Deleted',
+				message: 'Deleted comment from TODO list.'
+			};
+			res.redirect(301, '/dashboard');
+			//console.log(req.session.sessionFlash);
+		})
+		.catch((err) => console.log(err));
+});
+// ---------------------------------------------------------------------------------
+// DELETE - Update comment
+// ---------------------------------------------------------------------------------
+router.post('/update-comment', isLoggedIn, (req, res) => {
+	const { id, comments } = req.body;
+	console.log(id, comments);
+
+	Comment.updateOne({ _id: id }, { comments: comments })
+		.then(() => {
+			req.session.sessionFlash = {
+				type: 'Updated',
+				message: 'Updated comment from TODO list.'
+			};
+			res.redirect(301, '/dashboard');
 		})
 		.catch((err) => console.log(err));
 });

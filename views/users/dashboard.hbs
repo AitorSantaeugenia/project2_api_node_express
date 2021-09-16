@@ -39,11 +39,16 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" id="modalContentRemoveCr">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><strong>{{message.type}}</strong></h5>
+            <div class="modal-header modalHeaderBlack">
+                <h5 class="modal-title" id="exampleModalLabel"><img src="/images/favicon.png"
+                        style="width:20px; height:20px"></img></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true" style="color:#f00">&times;</span>
                 </button>
+            </div>
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: rgb(182, 3, 3) !important;"><strong>{{message.type}}</strong></h5>
+
             </div>
             <div class="modal-body">
                 {{message.message}}
@@ -54,9 +59,32 @@
         </div>
     </div>
 </div>
-<!-- MODAL -->
 {{/if}}
+<!-- MODAL -->
+<div id="divTodo">
+    <h3>TO<span style="font-size:20px">-</span>DO list</h3>
+    {{#each userInSession.comments}}
+    <ul style="margin: 2px">
+        <li style="list-style-type:none; ">
+            <form action="/delete-comment" method="POST">
+                <input type="hidden" value="{{comments}}" class="todoInputs" />
+                <input type="hidden" name="id" value={{_id}} />
+                <button type="submit" class="close">
+                    <span aria-hidden="true" style="color:#f00">&times;</span>
+                </button>
 
+            </form>
+            <form action="/update-comment" method="POST">
+                <input value="{{comments}}" class="todoInputs" name="comments" />
+                <input type="hidden" name="id" value={{_id}} />
+                <button type="submit" class="close">
+                    <i class="fa fa-pencil-square-o" aria-hidden="true" style="color:blue"></i>
+                </button>
+            </form>
+        </li>
+    </ul>
+    {{/each}}
+</div>
 <table class="table table-striped" id="favoriteCoinsTable">
     <thead class="theaddarkHeader">
         <tr>
@@ -108,11 +136,16 @@
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Add a note to this Crypto</h5>
+                    <div class="modal-header modalHeaderBlack">
+                        <h5 class="modal-title" id="exampleModalLabel"><img src="/images/favicon.png"
+                                style="width:20px; height:20px"></img></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" style="color:#f00">&times;</span>
                         </button>
+                    </div>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel" style="color: rgb(182, 3, 3) !important;">Add a
+                            note</h5>
                     </div>
                     <div class="modal-body">
                         <form action="/add-comment" id="usrform{{_id}}" method="POST">
@@ -122,7 +155,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-danger">Save changes</button>
                     </div>
                     </form>
                 </div>
